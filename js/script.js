@@ -13,11 +13,12 @@ var verbList = [];
 // Load data
 d3.csv(verbsLocation, function(data) {
     verbList.push(data.word)
-}).then(function() {
+}).then(setWords)
+
+function setWords() {
     // Data is loaded
 
-    // Pick random word
-    
+    // Pick random words
     let word1 = verbList.random();
 
     // Get words that start with the same letter as word 1
@@ -30,7 +31,7 @@ d3.csv(verbsLocation, function(data) {
     word1Span.innerHTML = word1;
     word2Span.innerHTML = word2;
     word3Span.innerHTML = word3;
-})
+}
 
 Array.prototype.random = function () {
     return this[Math.floor((Math.random()*this.length))];
