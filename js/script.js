@@ -2,10 +2,6 @@
 
 const verbsLocation = "data/verbs.csv"
 
-const word1Span = document.getElementById("word1");
-const word2Span = document.getElementById("word2");
-const word3Span = document.getElementById("word3");
-
 // ------------------------
 
 var verbList = [];
@@ -31,40 +27,32 @@ function setWords() {
     word1 += ", ";
     word2 += ", ";
 
-    let wordData = [word1.split(""),word2.split(""),word3.split("")]
-
+    let wordData = (word1 + word2 + word3).split("")
     
     // Set Text + Animation
-    let selection = d3.selectAll(".word-container").data(wordData);
+    // Each letter gets its own span
+    let letterContainer = d3.select("#word-container").selectAll(".letter-container").data(wordData).join("span");
 
-    // For each word container span
-    selection.each(function(word, i) {
-
-        // Give every letter in the word it's own span
-        let letterContainers = d3.select(this).selectAll(".letter-container").data(word).join("span")
-
-        // For each letter container span
-        letterContainers.each(function(letter, j) {
-            
-            // 
-            d3.select(this)
-            .attr("class", "letter-container")
-            .style("position", "relative")
-            .attr("position", j)
-            .text( d => d)
-            .interrupt()
-                .style("opacity", 0)
-                .style("bottom", "45px")
-                .transition()
-                    .style("opacity", 1)
-                    .style("bottom", "0px")
-                    .ease(d3.easeBackOut)
-                    .duration((i + 1) * 300 + j * 25);
-        });
+    // For each letter container span
+    letterContainer.each(function(letter, j) {
         
-
-        
+        d3.select(this)
+        .attr("class", "letter-container")
+        .style("position", "relative")
+        .text(d => d)
+        .interrupt()
+            .style("opacity", 0)
+            .style("bottom", "45px")
+            .transition()
+                .style("opacity", 1)
+                .style("bottom", "0px")
+                .ease(d3.easeBackOut)
+                .duration(300 + j * 30);
     });
+        
+
+        
+
         
 
 }
