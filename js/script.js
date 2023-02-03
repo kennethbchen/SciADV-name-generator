@@ -12,7 +12,6 @@ d3.csv(verbsLocation, function(data) {
 }).then(setWords)
 
 function setWords() {
-    // Data is loaded
 
     // Pick random words
     let word1 = verbList.random();
