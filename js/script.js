@@ -1,6 +1,6 @@
 "use strict";
 
-const wordsLocation = "/data/words.csv"
+const wordsLocation = "data/words.csv"
 
 // ------------------------
 
