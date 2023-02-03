@@ -31,6 +31,17 @@ function setWords() {
     word1Span.innerHTML = word1;
     word2Span.innerHTML = word2;
     word3Span.innerHTML = word3;
+
+    d3.selectAll(".word-container")
+        .interrupt()
+        .style("opacity", 0)
+        .style("bottom", "45px")
+        .transition()
+            .style("opacity", 1)
+            .style("bottom", "0px")
+            .ease(d3.easeBackOut)
+            .duration(500);
+
 }
 
 Array.prototype.random = function () {
