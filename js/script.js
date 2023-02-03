@@ -12,7 +12,6 @@ d3.csv(wordsLocation, function(data) {
 }).then(setWords)
 
 function setWords() {
-    console.log(wordList);
     // Pick random words
     let word1 = wordList.random();
     
