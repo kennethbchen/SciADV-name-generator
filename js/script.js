@@ -1,23 +1,23 @@
 "use strict";
 
-const verbsLocation = "data/verbs.csv"
+const wordsLocation = "/data/words.csv"
 
 // ------------------------
 
-var verbList = [];
+var wordList = [];
   
 // Load data
-d3.csv(verbsLocation, function(data) {
-    verbList.push(data.word)
+d3.csv(wordsLocation, function(data) {
+    wordList.push(data.word)
 }).then(setWords)
 
 function setWords() {
-
+    console.log(wordList);
     // Pick random words
-    let word1 = verbList.random();
+    let word1 = wordList.random();
     
     // Get words that start with the same letter as word 1
-    let filteredWords = verbList.filter((word) => word[0] === word1[0]);
+    let filteredWords = wordList.filter((word) => word[0] === word1[0]);
 
     // Get words that are not already chosen as words
     let word2 = filteredWords.filter((word) => word !== word1).random();
@@ -48,11 +48,6 @@ function setWords() {
                 .ease(d3.easeBackOut)
                 .duration(300 + j * 30);
     });
-        
-
-        
-
-        
 
 }
 
