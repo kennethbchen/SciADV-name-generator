@@ -1,5 +1,3 @@
-Generates parodies of "Live, Laugh, Love"
+Generates parody [Science Adventure Series](https://en.wikipedia.org/wiki/Science_Adventure) names.
 
-Inspired by the parody "Gaslight, Gatekeep, Girlboss"
-
-[Word Dataset](https://www.kaggle.com/datasets/ruchi798/part-of-speech-tagging) (Dataset seems to contain some incorrect words)
+[Word Dataset](https://github.com/hugsy/stuff/blob/main/random-word/english-nouns.txt)
