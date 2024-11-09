@@ -1,6 +1,6 @@
 "use strict";
 
-const wordsLocation = "data/words.csv"
+const wordsLocation = "data/english-nouns.csv"
 
 // ------------------------
 
@@ -14,22 +14,15 @@ d3.csv(wordsLocation, function(data) {
 function setWords() {
     // Pick random words
     let word1 = wordList.random();
-    
-    // Get words that start with the same letter as word 1
-    let filteredWords = wordList.filter((word) => word[0] === word1[0]);
+    let word2 = wordList.random();
 
-    // Get words that are not already chosen as words
-    let word2 = filteredWords.filter((word) => word !== word1).random();
-    let word3 = filteredWords.filter((word) => word !== word1 && word !== word2).random();
+    // Make words Title Case
+    word1 = word1.charAt(0).toUpperCase() + word1.substring(1);
+    word2 = word2.charAt(0).toUpperCase() + word2.substring(1);
 
-    word1 += ", ";
-    word2 += ", ";
-
-    let wordData = (word1 + word2 + word3).split("")
-    
     // Set Text + Animation
     // Each letter gets its own span
-    let letterContainer = d3.select("#word-container").selectAll(".letter-container").data(wordData).join("span");
+    let letterContainer = d3.select("#word-container").selectAll(".letter-container").data(`${word1};${word2}`).join("span");
 
     // For each letter container span
     letterContainer.each(function(letter, j) {
